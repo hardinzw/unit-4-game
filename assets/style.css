@@ -1,0 +1,93 @@
+.container1 {background: rgba(2, 88, 187, 0.863);
+padding: 10px;
+font-size: 50px;
+margin-top: 1%;
+margin-left: 1%;
+margin-right: 1%;
+color: white;
+font-family: 'Shadows Into Light', cursive;
+text-align: center;
+}
+
+.container2 {background: rgba(240, 59, 3, 0.863);
+padding: 10px;
+font-size: 30px;
+font-family: 'Shadows Into Light', cursive;
+margin-left: 0;
+max-width: 100%;
+margin-top: 1%;
+margin-left: 1%;
+margin-right: 1%;
+color: white;
+line-height: 35px;
+}
+
+#goal {background: rgba(13, 247, 247, 0.842);
+float: left;
+padding: 10px;
+width: 150px;
+height: 130px;
+margin-top: 1%;
+margin-left: 1%;
+font-size: 100px;
+font-family: 'Shadows Into Light', cursive;
+text-align: center;
+color: white;}
+
+#record {background: rgba(231, 180, 10, 0.89);
+float: left;
+padding: 10px;
+margin-top: 1%;
+margin-left: 1%;
+margin-bottom: 1%;
+width: 230px;
+height: 130px;
+font-size: 50px;
+font-family: 'Shadows Into Light', cursive;
+color: white;
+}
+.crystal {width: 225px;
+height: 180px;
+border-radius: 3px;
+box-shadow: 5px 5px 5px rgba(231, 180, 10, 0.89);
+}
+
+.crystal:hover{
+box-shadow: 10px 10px 10px rgba(231, 180, 10, 0.89);
+cursor: pointer;
+}
+
+.crystals {clear: left;
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+margin-left: 1%;
+}
+
+#total {background: rgba(10, 231, 47, 0.89);
+float: left;
+padding: 10px;
+margin-top: 1%;
+margin-left: 1%;
+width: 320px;
+height: 130px;
+font-size: 50px;
+font-family: 'Shadows Into Light', cursive;
+color: white;
+}
+@media screen and (max-width: 768px){
+    body{width: 100%;
+    height: auto;}
+
+    .crystals{width:100%;
+    height:auto;}
+}
+@media screen and (max-width: 640px){
+    body{width: 100%;
+    height:auto;}
+
+    .crystals{width: 100%;
+    height:auto;}
+}
+
+

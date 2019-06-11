@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Crystal Collector</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/reset.css">
+    <link rel="javascript" href="assets/game.js">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<header>
+    <div class="container1">
+        <h1>Crystal Collector</h1>
+    </div>
+</header>
+
+<body background="assets/images/background.1.jpg">
+
+    <!--Game Instructions-->
+    <div class="container2">
+        <h2>How to Play:</h2>
+        <p>1. A random number will be generated and displayed below</p>
+        <p>2. There are four crystals below. By clicking on a crystal you will add a specific amount of points to your
+            total score</p>
+        <p>3. The game is won by matching your total score to the randomly generated number. The game is lost if your
+            total score goes above the randomly generated number</p>
+        <p>4. The value of each crystal will be revealed when clicked</p>
+        <p>5. The values of each crystal will reset at the beginning of a new game</p>
+    </div>
+
+    <!--Randomly Selected Number-->
+    <div id="goal">
+        <p><span id="random"></span></p>
+    </div>
+
+    <!--Win/Loss Record-->
+    <div id="record">
+        <p>Wins: <span id="wins"></span></p>
+        <p>Losses: <span id="losses"></span></p>
+    </div>
+    <br>
+    <!--Crystal Images-->
+    <div class="crystals">
+    </div>
+
+    <!--Total Crystals Collected-->
+    <div id="total">
+        <p>Total Crystals Collected: <span id="score"></span></p>
+    </div>
+
+    <!--Javascript-->
+    <script type="text/javascript">
+
+        var counter = 0;
+        var win = 0;
+        var loss = 0;
+
+        var resetGame = function () {
+
+            $(".crystals").empty();
+
+            var images = ["https://cdn.shopify.com/s/files/1/0015/5611/9612/files/CLU-0006_large.jpg?v=1523013148", 
+            "https://as2.ftcdn.net/jpg/02/19/94/47/500_F_219944737_dWAxgR5cw7BkT4qbRaMxXMDv0SigJepn.jpg",
+            "https://media.buzzle.com/media/images-en/photos/gemstones/1200-31615488-hauyne-gemstone.jpg", 
+            "https://upload.wikimedia.org/wikipedia/commons/5/5c/Chrysocolla_USA.jpg"];
+
+            //Creating target value to hit.
+            targetNumber = Math.floor(Math.random() * 102) + 19;
+            $("#random").text(targetNumber);
+            console.log(targetNumber)
+
+            //Creating crystal images and assigning random values to each
+            for (var i = 0; i < 4; i++) {
+                var numberOptions = Math.floor(Math.random() * 12) + 1;
+                console.log(numberOptions);
+
+                var crystal = $("<div>");
+                crystal.attr({
+                    "class": 'crystal',
+                    "data-random": numberOptions
+                });
+
+                crystal.css({
+                    "background-image":"url('" + images[i] + "')",
+                    "background-size":"cover"
+                })
+
+                $(".crystals").append(crystal);
+            }
+            $("#total").text("Total Crystals Collected: " + counter);
+        }
+
+        resetGame();
+
+        //Creating click events for crystals
+        $(document).on('click', ".crystal", function() {
+
+            var number = parseInt($(this).attr('data-random'));
+            counter += number;
+
+            $("#total").text("Total Crystals Collected: " + counter);
+
+            if (counter > targetNumber) {
+                loss++;
+                counter = 0
+                $("#losses").text(loss);
+                alert("Too many crystals to carry back to camp!");
+                console.log("You Lose");
+                resetGame();
+            }
+
+            else if (counter === targetNumber) {
+                win++;
+                counter = 0
+                $("#wins").text(win);
+                alert("Pay Day!");
+                console.log("You Win");
+                resetGame();
+            }
+            console.log(counter);
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>
